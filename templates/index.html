@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parq Digger App</title>
+</head>
+<body>
+    <h1>File Converter App</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="files[]" multiple>
+        <button type="submit">Upload Files</button>
+    </form>
+    <form action="/convert_csv_to_parquet" method="post">
+        <button type="submit">Convert CSV to Parquet</button>
+    </form>
+    <form action="/convert_parquet_to_csv" method="post">
+        <button type="submit">Convert Parquet to CSV</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
